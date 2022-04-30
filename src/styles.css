@@ -1,7 +1,9 @@
 body {
-  background-image: url("./images/galaxybg.jpg");
+  background-image: url("../images/pexels-roberto-nickson-2775196.jpg");
+  background-position: center;
   background-size: cover;
   background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
 .container {
@@ -16,10 +18,15 @@ body {
   color: #0c5494;
   width: 650px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  opacity: 0.85;
 }
 
 ul {
   list-style: none;
+}
+
+#citySearched {
+  font-family: "Playfair Display", serif;
 }
 
 #lastUpdateTime {
@@ -35,4 +42,9 @@ ul {
 }
 h3 {
   text-align: center;
+}
+
+#author {
+  text-align: center;
+  color: #fff;
 }
