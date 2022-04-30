@@ -1,0 +1,38 @@
+body {
+  background-image: url("./images/galaxybg.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.container {
+  background: #e8bdc6;
+  border-color: #000000;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 50px;
+  padding: 30px 60px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #0c5494;
+  width: 650px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+ul {
+  list-style: none;
+}
+
+#lastUpdateTime {
+  font-size: small;
+}
+
+.lastUpdate {
+  font-size: small;
+}
+
+#climateUpdate {
+  font-size: small;
+}
+h3 {
+  text-align: center;
+}
