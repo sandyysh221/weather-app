@@ -30,6 +30,7 @@
                 type="search"
                 class="form-control"
                 placeholder="Enter a city"
+                autocomplete="off"
                 id="city-input"
               />
             </div>
@@ -69,13 +70,14 @@
       </div>
       <div class="row">
         <div class="col-7">
-          <div class="clearfix"></div>
+          <div class="clearfix weather-temperature"></div>
           <h4 id="currentWeather"></h4>
           <img src="" alt="sunny" class="float-left" id="icon" />
           <div class="float-left">
             <h3 id="currentTemp"></h3>
-            <span class="units"
-              >°C | <a href="#" id="fahrenheit-link">°F</a></span
+            <span class="units">
+              <a href="#" id="celcius-link" class="active">°C</a> |
+              <a href="#" id="fahrenheit-link">°F</a></span
             >
           </div>
         </div>

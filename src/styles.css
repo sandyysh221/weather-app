@@ -63,10 +63,24 @@ body {
   margin-right: 2px;
 }
 
-#units {
+a {
+  text-decoration: none;
+}
+
+.units {
   position: relative;
   font-size: 16px;
   top: -34px;
+}
+
+.units .active {
+  color: #0c5494;
+  cursor: default;
+  text-decoration: none;
+}
+
+.units .active:hover {
+  text-decoration: none;
 }
 
 #climateUpdate {
@@ -92,6 +106,7 @@ h3 {
 
 #link {
   color: #fff;
+  text-decoration: underline;
 }
 
 #link:hover {

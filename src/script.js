@@ -28,22 +28,23 @@ let months = [
 let month = months[now.getMonth()];
 h2.innerHTML = `Last updated: ${day} ${date} ${month}, ${hours}:${minutes}.`;
 
-/*W4 HW C<->F Conversion
-function showTempF() {
-  let showFahrenheit = document.querySelector("#currentTemp");
-  document.getElementById("currentTemp").innerHTML = "60°F";
+//Celcius Fahrenheit Conversion
+function showTempF(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#currentTemp");
+  tempClickC.classList.remove("active");
+  tempClickF.classList.add("active");
+  let fahrenheitTemperature = (celciusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
 
-let tempClickF = document.querySelector("#fahrenheit-link");
-tempClickF.addEventListener("click", showTempF);
-
-function showTempC() {
-  let showCelcius = document.querySelector("#currentTemp");
-  document.getElementById("currentTemp").innerHTML = "16°C";
+function showTempC(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#currentTemp");
+  tempClickF.classList.remove("active");
+  tempClickC.classList.add("active");
+  temperatureElement.innerHTML = Math.round(celciusTemperature);
 }
-
-let tempClickC = document.querySelector("#celcius-link");
-tempClickC.addEventListener("click", showTempC);*/
 
 //Searched Weather Result
 function showCurrentWeather(response) {
@@ -72,6 +73,8 @@ function showCurrentWeather(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  celciusTemperature = response.data.main.temp;
 }
 
 function search(city) {
@@ -86,6 +89,14 @@ function handleSubmit(event) {
   let city = document.querySelector("#city-input").value;
   search(city);
 }
+
+let tempClickF = document.querySelector("#fahrenheit-link");
+tempClickF.addEventListener("click", showTempF);
+
+let tempClickC = document.querySelector("#celcius-link");
+tempClickC.addEventListener("click", showTempC);
+
+let celciusTemperature = null;
 
 let form = document.querySelector("#citySearchForm");
 form.addEventListener("submit", handleSubmit);
