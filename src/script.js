@@ -26,7 +26,7 @@ let months = [
   "Dec",
 ];
 let month = months[now.getMonth()];
-h2.innerHTML = `Last Updated: ${day} ${date} ${month}, ${hours}:${minutes}.`;
+h2.innerHTML = `Last updated: ${day} ${date} ${month}, ${hours}:${minutes}.`;
 
 /*W4 HW C<->F Conversion
 function showTempF() {
@@ -65,6 +65,13 @@ function showCurrentWeather(response) {
 
   let displayCityName = document.querySelector("#citySearched");
   displayCityName.innerHTML = response.data.name;
+
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 function search(city) {

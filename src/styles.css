@@ -21,24 +21,19 @@ body {
   opacity: 0.85;
 }
 
-.button-box {
-  display: inline-block;
-  font-weight: 400;
-  line-height: 1.5;
-  margin: 20px auto;
-  background: transparent;
-  font-size: 1rem;
-  text-align: center;
-  text-decoration: none;
-  vertical-align: middle;
-  padding: 0.375rem 0.75rem;
+#search-button {
   border: 1px solid #a890c4;
-  border-radius: 0.25rem;
-  transition: all 150ms ease-in-out;
 }
 
-.button-box:hover {
-  cursor: pointer;
+#search-button:hover {
+  background-color: #a890c4;
+}
+
+#current-location-button {
+  border: 1px solid #a890c4;
+}
+
+#current-location-button:hover {
   background-color: #a890c4;
 }
 
@@ -51,10 +46,14 @@ body {
   line-height: 28px;
 }
 
+#currentWeather:first-letter {
+  text-transform: capitalize;
+}
+
 #currentWeather img {
   margin-right: 2px;
-  height: 25px;
-  width: 25px;
+  height: 15px;
+  width: 15px;
 }
 
 #currentTemp {
