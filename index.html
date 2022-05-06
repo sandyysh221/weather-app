@@ -23,7 +23,7 @@
   <body>
     <div class="container">
       <div class="row">
-        <div class="col-5">
+        <div class="col-10">
           <form id="citySearchForm">
             <div class="mb-3">
               <input
@@ -35,63 +35,51 @@
             </div>
           </form>
         </div>
-        <div class="col-3">
+        <div class="col-1">
           <button
             type="button"
-            class="btn btn-outline-primary"
+            class="button-box"
+            title="Search"
             id="search-button"
           >
             🔎
           </button>
         </div>
-      </div>
-      <div class="row">
         <div class="col-1">
           <button
             type="submit"
-            class="btn btn-outline-primary"
+            class="button-box"
+            title="Current Location"
             id="current-location-button"
           >
             📍
           </button>
         </div>
-        <div class="col-1">
-          <button type="button" class="btn btn-outline-info" id="celcius-link">
-            °C
-          </button>
-        </div>
-        <div class="col-1">
-          <button
-            type="button"
-            class="btn btn-outline-info"
-            id="fahrenheit-link"
-          >
-            °F
-          </button>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <h2 id="lastUpdateTime"></h2>
         </div>
       </div>
       <br />
       <div class="row">
-        <div class="col-6">
+        <div class="col-12">
           <h1 id="citySearched"></h1>
         </div>
-        <div class="col-6">
-          <ul>
-            <li id="sunrise">🌅 :</li>
-            <li id="sunset">🌄 :</li>
-          </ul>
-        </div>
       </div>
-
       <div class="row">
-        <div class="col-6">
+        <div class="col-7">
+          <div class="clearfix"></div>
           <h4 id="currentWeather"></h4>
-          <img src="images/icons/animated/day.svg" />
-          <span id="currentTemp"></span>
-          <br />
-          <h2 id="lastUpdateTime"></h2>
+          <img src="images/day.svg" alt="sunny" class="float-left" />
+          <div class="float-left">
+            <h3 id="currentTemp"></h3>
+            <span class="units"
+              >°C | <a href="#" id="fahrenheit-link">°F</a></span
+            >
+          </div>
         </div>
-        <div class="col-6" id="climateUpdate">
+        <div class="col-5" id="climateUpdate">
           <ul>
             <li id="humidity"></li>
             <li id="wind"></li>
@@ -135,12 +123,14 @@
         </div>
       </div>
     </div>
-    <p></p>
     <p id="author">
-      <a href="https://github.com/sandyysh221/weather-app" target="_blank"
-        >Open-source code</a
-      >
-      by Sandy Yu
+      This project was coded by Sandy Yu and is
+      <a
+        href="https://github.com/sandyysh221/weather-app"
+        target="_blank"
+        id="link"
+        >open-sourced on GitHub</a
+      >.
     </p>
     <script src="src/script.js"></script>
   </body>
