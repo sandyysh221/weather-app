@@ -23,7 +23,7 @@ body {
 
 #search-button {
   border: 1px solid #a890c4;
-  float: left;
+  float: right;
 }
 
 #search-button:hover {
@@ -32,7 +32,7 @@ body {
 
 #current-location-button {
   border: 1px solid #a890c4;
-  margin-left: 15px;
+  float: right;
 }
 
 #current-location-button:hover {
