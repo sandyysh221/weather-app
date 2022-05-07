@@ -50,7 +50,7 @@ function showTempC(event) {
 function showCurrentWeather(response) {
   let temp = Math.round(response.data.main.temp);
   let currentTemperature = document.querySelector("#currentTemp");
-  currentTemperature.innerHTML = `${temp}°C`;
+  currentTemperature.innerHTML = `${temp}`;
 
   let humid = Math.round(response.data.main.humidity);
   let humidity = document.querySelector("#humidity");

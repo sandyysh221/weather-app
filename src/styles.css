@@ -9,13 +9,13 @@ body {
 
 .container {
   background: #e8bdc6;
-  border-color: #000000;
+  border-color: #383e58;
   border-radius: 10px;
   display: block;
   margin: 30px auto;
   margin-top: 50px;
   padding: 30px 60px;
-  color: #0c5494;
+  color: #383e58;
   max-width: 650px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
   opacity: 0.85;
@@ -23,6 +23,7 @@ body {
 
 #search-button {
   border: 1px solid #a890c4;
+  float: left;
 }
 
 #search-button:hover {
@@ -31,19 +32,28 @@ body {
 
 #current-location-button {
   border: 1px solid #a890c4;
+  margin-left: 15px;
 }
 
 #current-location-button:hover {
   background-color: #a890c4;
 }
 
-#lastUpdateTime {
-  font-size: small;
+#lastUpdateTime,
+#climateUpdate {
+  font-size: 14px;
 }
 
 #citySearched {
   font-family: "Playfair Display", serif;
+  font-size: 70px;
   line-height: 28px;
+  font-weight: 800;
+  text-align: center;
+}
+
+#currentWeather {
+  margin-top: 30px;
 }
 
 #currentWeather:first-letter {
@@ -57,10 +67,11 @@ body {
 }
 
 #currentTemp {
-  font-size: 36px;
+  font-size: 85px;
   line-height: 36px;
   font-weight: 400;
   margin-right: 2px;
+  margin-top: 25px;
 }
 
 a {
@@ -69,8 +80,7 @@ a {
 
 .units {
   position: relative;
-  font-size: 16px;
-  top: -34px;
+  font-size: 14px;
 }
 
 .units .active {
@@ -81,10 +91,6 @@ a {
 
 .units .active:hover {
   text-decoration: none;
-}
-
-#climateUpdate {
-  font-size: small;
 }
 
 ul {
