@@ -120,3 +120,20 @@ h3 {
   color: #e1b8c7;
   cursor: pointer;
 }
+
+.weather-forecast {
+  text-align: center;
+}
+
+.daily-forecast {
+  font-size: 16px;
+}
+
+.max-temp {
+  font-size: 13px;
+}
+
+.min-temp {
+  font-size: 13px;
+  opacity: 75%;
+}
