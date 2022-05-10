@@ -82,7 +82,6 @@ function displayForecast(response) {
 }
 
 function getForecast(coordinates) {
-  console.log(coordinates);
   let apiKey = "d8426e0d7454e83e722791e94527aed3";
   let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiURL).then(displayForecast);
@@ -93,20 +92,26 @@ function showCurrentWeather(response) {
   let currentTemperature = document.querySelector("#currentTemp");
   currentTemperature.innerHTML = `${temp}`;
 
+  let feelsElement = Math.round(response.data.main.feels_like);
+  let feelsLike = document.querySelector("#feels");
+  feelsLike.innerHTML = `Feels like:${feelsElement}°`;
+
   let humid = Math.round(response.data.main.humidity);
   let humidity = document.querySelector("#humidity");
   humidity.innerHTML = `Humidity: ${humid}%`;
 
   let windy = Math.round(response.data.wind.speed);
   let windSpeed = document.querySelector("#wind");
-  windSpeed.innerHTML = `Wind: ${windy} km/h`;
+  windSpeed.innerHTML = `Wind: ${windy} m/s`;
 
   let weatherNow = response.data.weather[0].description;
   let displayCurrentWeather = document.querySelector("#currentWeather");
   displayCurrentWeather.innerHTML = `${weatherNow}`;
 
   let displayCityName = document.querySelector("#citySearched");
-  displayCityName.innerHTML = response.data.name;
+  let city = response.data.name;
+  let country = response.data.sys.country;
+  displayCityName.innerHTML = `${city}, ${country}`;
 
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
