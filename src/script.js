@@ -28,7 +28,6 @@ let months = [
 let month = months[now.getMonth()];
 h2.innerHTML = `Last updated: ${day} ${date} ${month}, ${hours}:${minutes}.`;
 
-//Celcius Fahrenheit Conversion
 function showTempF(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#currentTemp");
@@ -46,7 +45,27 @@ function showTempC(event) {
   temperatureElement.innerHTML = Math.round(celciusTemperature);
 }
 
-//Searched Weather Result
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row"><h5>Daily Forecast</h5>`;
+  let days = ["Thurs", "Fri", "Sat", "Sun", "Mon"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+          <div class="col-2">
+            <div class="daily-forecast">${day}</div>
+            <img src="" alt="" width="42" />
+            <div class="forecast-temps">
+              <span class="max-temp">18° </span
+              ><span class="min-temp">10°</span>
+            </div>
+          </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function showCurrentWeather(response) {
   let temp = Math.round(response.data.main.temp);
   let currentTemperature = document.querySelector("#currentTemp");
@@ -90,6 +109,20 @@ function handleSubmit(event) {
   search(city);
 }
 
+function showCurrentLocation(position) {
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+  let unit = "metric";
+  let apiKey = "d8426e0d7454e83e722791e94527aed3";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${unit}`;
+  axios.get(apiUrl).then(showCurrentWeather);
+}
+
+function findCurrentLocation(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(showCurrentLocation);
+}
+
 let tempClickF = document.querySelector("#fahrenheit-link");
 tempClickF.addEventListener("click", showTempF);
 
@@ -105,21 +138,7 @@ let searchButton = document.querySelector("#search-button");
 searchButton.addEventListener("click", handleSubmit);
 
 search("Ottawa"); //Displays default location
-
-//Current Location Weather
-function showCurrentLocation(position) {
-  let latitude = position.coords.latitude;
-  let longitude = position.coords.longitude;
-  let unit = "metric";
-  let apiKey = "d8426e0d7454e83e722791e94527aed3";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${unit}`;
-  axios.get(apiUrl).then(showCurrentWeather);
-}
-
-function findCurrentLocation(event) {
-  event.preventDefault();
-  navigator.geolocation.getCurrentPosition(showCurrentLocation);
-}
+displayForecast();
 
 let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", findCurrentLocation);
