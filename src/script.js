@@ -57,7 +57,7 @@ function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row"><h5>Daily Forecast</h5>`;
   forecast.forEach(function (forecastDay, index) {
-    if (index < 6) {
+    if (index > 0 && index < 7) {
       forecastHTML =
         forecastHTML +
         `
@@ -94,7 +94,7 @@ function showCurrentWeather(response) {
 
   let feelsElement = Math.round(response.data.main.feels_like);
   let feelsLike = document.querySelector("#feels");
-  feelsLike.innerHTML = `Feels like:${feelsElement}°`;
+  feelsLike.innerHTML = `Feels like: ${feelsElement}°`;
 
   let humid = Math.round(response.data.main.humidity);
   let humidity = document.querySelector("#humidity");
@@ -121,6 +121,9 @@ function showCurrentWeather(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 
   celciusTemperature = response.data.main.temp;
+
+  tempClickC.classList.add("active");
+  tempClickF.classList.remove("active");
 
   getForecast(response.data.coord);
 }
