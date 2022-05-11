@@ -4,11 +4,12 @@ body {
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Radio Canada", sans-serif;
+  font-weight: 300;
 }
 
 .container {
-  background: #e8bdc6;
+  background: #fecbc5;
   border-color: #383e58;
   border-radius: 10px;
   display: block;
@@ -39,9 +40,14 @@ body {
   background-color: #a890c4;
 }
 
-#lastUpdateTime,
-#climateUpdate {
+#lastUpdateTime {
   font-size: 14px;
+  font-weight: 300;
+}
+
+#climateUpdate {
+  margin-top: 15px;
+  font-size: 16px;
 }
 
 #citySearched {
