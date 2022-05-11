@@ -45,11 +45,6 @@ body {
   font-weight: 300;
 }
 
-#climateUpdate {
-  margin-top: 15px;
-  font-size: 16px;
-}
-
 #citySearched {
   font-family: "Playfair Display", serif;
   font-size: 70px;
@@ -61,23 +56,22 @@ body {
 #countrySearched {
   font-family: "Playfair Display", serif;
   font-size: 30px;
-  margin-top: 12px;
+  margin-top: 18px;
   font-weight: 600;
   text-align: center;
 }
 
 #currentWeather {
-  margin-top: 16px;
+  margin-top: 8px;
 }
 
 #currentWeather:first-letter {
   text-transform: capitalize;
 }
 
-#currentWeather img {
-  margin-right: 2px;
-  height: 15px;
-  width: 15px;
+#icon {
+  height: fit-content;
+  width: fit-content;
 }
 
 #currentTemp {
@@ -86,6 +80,7 @@ body {
   font-weight: 400;
   margin-right: 2px;
   margin-top: 25px;
+  text-align: center;
 }
 
 a {
@@ -101,10 +96,17 @@ a {
   color: #0c5494;
   cursor: default;
   text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .units .active:hover {
   text-decoration: none;
+}
+
+#climateUpdate {
+  margin-top: 15px;
+  font-size: 16px;
 }
 
 ul {
@@ -112,10 +114,6 @@ ul {
   line-height: 18px;
   margin: 0;
   padding: 0;
-}
-
-h3 {
-  text-align: center;
 }
 
 h5 {
