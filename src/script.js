@@ -34,8 +34,8 @@ tempClickF.addEventListener("click", showTempF);
 let tempClickC = document.querySelector("#celcius-link");
 tempClickC.addEventListener("click", showTempC);
 
-let celciusTemperature = null;
-let feelsLikeTemperature = null;
+let units = "metric";
+let coordinates = null;
 
 let form = document.querySelector("#citySearchForm");
 form.addEventListener("submit", handleSubmit);
@@ -49,8 +49,6 @@ let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", findCurrentLocation);
 
 let apiKey = "d8426e0d7454e83e722791e94527aed3";
-let unit = "metric";
-let city = null;
 
 function showCurrentWeather(response) {
   let temp = Math.round(response.data.main.temp);
@@ -75,8 +73,11 @@ function showCurrentWeather(response) {
 
   let displayCityName = document.querySelector("#citySearched");
   let city = response.data.name;
+  displayCityName.innerHTML = `${city}`;
+
+  let displayCountry = document.querySelector("#countrySearched");
   let country = response.data.sys.country;
-  displayCityName.innerHTML = `${city}, ${country}`;
+  displayCountry.innerHTML = `${country}`;
 
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
@@ -85,18 +86,14 @@ function showCurrentWeather(response) {
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 
-  celciusTemperature = response.data.main.temp;
+  coordinates = response.data.coord;
 
-  tempClickC.classList.add("active");
-  tempClickF.classList.remove("active");
-
-  getForecast(response.data.coord);
+  getForecast();
 }
 
 function search(city) {
-  let unit = "metric";
   let apiKey = "d8426e0d7454e83e722791e94527aed3";
-  let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
+  let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(apiURL).then(showCurrentWeather);
 }
 
@@ -109,9 +106,13 @@ function handleSubmit(event) {
 function showCurrentLocation(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
-  let unit = "metric";
+
+  searchLocation(latitude, longitude);
+}
+
+function searchLocation(latitude, longitude) {
   let apiKey = "d8426e0d7454e83e722791e94527aed3";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${unit}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showCurrentWeather);
 }
 
@@ -125,17 +126,8 @@ function showTempF(event) {
   tempClickC.classList.remove("active");
   tempClickF.classList.add("active");
 
-  let unit = "imperial";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
-  axios.get(apiUrl).then(showCurrentWeather);
-
-  let temperatureElement = document.querySelector("#currentTemp");
-  let fahrenheitTemperature = (celciusTemperature * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-
-  let feelsFahrenheitElement = document.querySelector("#feels");
-  let feelsLikeFahrenheit = Math.round((feelsLikeTemperature * 9) / 5 + 32);
-  feelsFahrenheitElement.innerHTML = `Feels like: ${feelsLikeFahrenheit}°`;
+  units = "imperial";
+  searchLocation(coordinates.lat, coordinates.lon);
 }
 
 function showTempC(event) {
@@ -143,16 +135,8 @@ function showTempC(event) {
   tempClickF.classList.remove("active");
   tempClickC.classList.add("active");
 
-  let unit = "metric";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
-  axios.get(apiUrl).then(showCurrentWeather);
-
-  let temperatureElement = document.querySelector("#currentTemp");
-  temperatureElement.innerHTML = Math.round(celciusTemperature);
-
-  let feelsElement = document.querySelector("#feels");
-  let feelsLikeTemp = Math.round(feelsLikeTemperature);
-  feelsElement.innerHTML = `Feels like: ${feelsLikeTemp}°`;
+  units = "metric";
+  searchLocation(coordinates.lat, coordinates.lon);
 }
 
 function formatForecastDay(timestamp) {
@@ -191,8 +175,8 @@ function displayForecast(response) {
   forecastElement.innerHTML = forecastHTML;
 }
 
-function getForecast(coordinates) {
+function getForecast() {
   let apiKey = "d8426e0d7454e83e722791e94527aed3";
-  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${units}`;
   axios.get(apiURL).then(displayForecast);
 }
